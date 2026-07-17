@@ -187,6 +187,11 @@ def inject_base_css() -> None:
 
         /* ---- Page header (compact, no hero banner) ---- */
         .gr-page-header {{ margin-bottom: 1.3rem; }}
+        .gr-page-header .brand-tag {{
+            display: flex; align-items: center; gap: .3rem; font-size: .7rem; font-weight: 700;
+            letter-spacing: .04em; color: {p['text_muted']}; margin-bottom: .5rem;
+        }}
+        .gr-page-header .brand-tag svg {{ flex-shrink: 0; }}
         .gr-page-header .eyebrow {{
             font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
             color: {p['accent_strong']}; margin-bottom: .2rem;
@@ -315,6 +320,7 @@ def page_header(eyebrow: str, title: str, subtitle: str = "") -> None:
     st.markdown(
         f"""
         <div class="gr-page-header">
+            <div class="brand-tag">{icon('shield', 12, stroke_width=2.4)} GuardRail</div>
             <div class="eyebrow">{eyebrow}</div>
             <h1>{title}</h1>
             {f'<p>{subtitle}</p>' if subtitle else ''}
